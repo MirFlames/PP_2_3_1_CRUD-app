@@ -1,15 +1,33 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-<div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
-</div>
+    <table>
+        <tr>
+            <form action="#" th:action="@{/save}" th:object="${user}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <th><input type="text" minlength="2" maxlength="20" name="name" placeholder="Name" th:field="*{name}" /></th>
+                <th><input type="text" minlength="2" maxlength="20" name="surname" placeholder="Surname" th:field="*{surname}" /></th>
+                <th><input type="number" maxlength="20" name="deposit" placeholder="Deposit" th:field="*{deposit}" /></th>
+                <th><input type="submit" value="Save" /></th>
+            </form>
+        </tr>
+
+        <tr th:each="user : ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.deposit}"></td>
+                <td>
+                    <form action="#">
+                        <input th:formaction="@{/delete/{id}(id=${user.id})}" type="submit" value="Delete" />
+                        <input th:formaction="@{/edit/{id}(id=${user.id})}" type="submit" value="Edit" />
+                    </form>
+                </td>
+        </tr>
+    </table>
 </body>
 </html>
