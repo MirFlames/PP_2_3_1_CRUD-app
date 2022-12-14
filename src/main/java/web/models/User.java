@@ -1,18 +1,18 @@
 package web.models;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Setter @Getter
 @NoArgsConstructor
 @ToString
-@Table (name = "users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

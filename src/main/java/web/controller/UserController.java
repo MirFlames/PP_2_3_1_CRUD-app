@@ -4,14 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import web.dao.UserDao;
-import web.dao.UserDaoImpl;
 import web.models.User;
 import web.service.UserService;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -29,7 +23,6 @@ public class UserController {
     @PostMapping(value = "/save")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.save(user);
-        System.out.println(user.getName());
         return "redirect:/";
     }
 
